@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   reason = '';
   webDevice = true;
-  loggedIn = false;
+  loggedIn;
   open = false;
   constructor(breakpointObserver: BreakpointObserver, private auth: AuthService,
     private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedIn = this.auth.isLoggedIn();
+    this.loggedIn = JSON.parse(localStorage.getItem('user'))['photoURL'];
   }
 
   close(reason: string): void {
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
         provider: login.credential.providerId
       };
       localStorage.setItem('user', JSON.stringify(user));
-      this.loggedIn = true;
+      this.loggedIn = login.additionalUserInfo.profile['picture'];
     } catch (err) {
       console.log(err.message);
     }
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
         provider: login.credential.providerId
       };
       localStorage.setItem('user', JSON.stringify(user));
-      this.loggedIn = true;
+      this.loggedIn = login.additionalUserInfo.profile['avatar_url'];
     } catch (err) {
       console.log(err);
       console.log('Err - Popup might be blocked. Enable popup');

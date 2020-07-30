@@ -30,7 +30,7 @@ export class HomeComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl('https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg'));
     this.matIconRegistry.addSvgIcon(
       'Disney',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('https://cdn.worldvectorlogo.com/logos/disney.svg'));
+      this.domSanitizer.bypassSecurityTrustResourceUrl('https://cdn.worldvectorlogo.com/logos/disney-1.svg'));
     this.dataSource = ELEMENT_DATA;
   }
 }

@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '@angular/material/prebuilt-themes/purple-green.css';
+body,
+perfect-scrollbar,
+mat-table {
+    background-color: #2f353a;
+    color: #e4e7ea;
+}
+
 .spacer {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;

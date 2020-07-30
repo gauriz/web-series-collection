@@ -8,13 +8,24 @@
             </div>
             <ng-container *ngIf='webDevice'>
                 <button mat-icon-button matTooltip='Wishlist'>
-                        <mat-icon>favorite</mat-icon>
+                        <mat-icon>favorite</mat-icon> 
                     </button>
-                <button mat-icon-button matTooltip='Go to Profile'>
-                        <mat-icon>person</mat-icon>
+                <button mat-icon-button matTooltip='Go to Profile' *ngIf='loggedIn' [matMenuTriggerFor]="logoutMenu">
+                       <img [src]= 'loggedIn' style="height: 22px;
+                       border-radius: 50%;
+                       border: 2px solid #44ca44;">
                     </button>
 
-                <button mat-button [matMenuTriggerFor]="menu" *ngIf='!loggedIn'>Login</button>
+                <mat-menu #logoutMenu="matMenu">
+                    <button mat-menu-item>Profile </button>
+                    <button mat-menu-item (click)='logout()'>Logout </button>
+                </mat-menu>
+
+
+                <button mat-icon-button matTooltip='Login' *ngIf='!loggedIn' [matMenuTriggerFor]="menu">
+                  <mat-icon> person </mat-icon>
+                 </button>
+
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)='loginWithGoogle()'><mat-icon svgIcon='google'> </mat-icon>Google </button>
                     <button mat-menu-item (click)='loginWithFB()'><mat-icon svgIcon='facebook'> </mat-icon>Facebook</button>
@@ -22,7 +33,6 @@
                 </mat-menu>
 
 
-                <a mat-button (click)='logout()' *ngIf='loggedIn'>Logout</a>
             </ng-container>
             <ng-container *ngIf='!webDevice'>
                 <button mat-icon-button [matMenuTriggerFor]="menu">
