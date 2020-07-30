@@ -13,7 +13,16 @@
                 <button mat-icon-button matTooltip='Go to Profile'>
                         <mat-icon>person</mat-icon>
                     </button>
-                <a mat-button (click)='login()'>{{loggedIn ? 'Logout' : 'Login' }}</a>
+
+                <button mat-button [matMenuTriggerFor]="menu" *ngIf='!loggedIn'>Login</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)='loginWithGoogle()'><mat-icon svgIcon='google'> </mat-icon>Google </button>
+                    <button mat-menu-item (click)='loginWithFB()'><mat-icon svgIcon='facebook'> </mat-icon>Facebook</button>
+                    <button mat-menu-item (click)='loginWithGitHub()'> <mat-icon svgIcon='github'> </mat-icon>GitHub</button>
+                </mat-menu>
+
+
+                <a mat-button (click)='logout()' *ngIf='loggedIn'>Logout</a>
             </ng-container>
             <ng-container *ngIf='!webDevice'>
                 <button mat-icon-button [matMenuTriggerFor]="menu">
