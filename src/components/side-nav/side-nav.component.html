@@ -1,0 +1,6 @@
+<mat-selection-list [multiple]="false" (selectionChange)='selectedValue($event)' [(ngModel)]="selectedNav">
+    <mat-list-option *ngFor="let option of sideNavOptions" [value]="option" [class.selected]='selectedNav[0].text === option.text'>
+        {{option.text}}
+        <mat-divider></mat-divider>
+    </mat-list-option>
+</mat-selection-list>

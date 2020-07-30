@@ -1,0 +1,46 @@
+<mat-drawer-container autosize (backdropClick)="close('backdrop')">
+    <mat-toolbar class="fixed-header">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="open = !open ; open ? sidenav.open(): sidenav.close()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            <div class='spacer' [class.title-web]='webDevice' [class.title-mobile]='!webDevice'> Web-Series Collection
+            </div>
+            <ng-container *ngIf='webDevice'>
+                <button mat-icon-button matTooltip='Wishlist'>
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                <button mat-icon-button matTooltip='Go to Profile'>
+                        <mat-icon>person</mat-icon>
+                    </button>
+                <a mat-button (click)='login()'>{{loggedIn ? 'Logout' : 'Login' }}</a>
+            </ng-container>
+            <ng-container *ngIf='!webDevice'>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                            <mat-icon>favorite</mat-icon>
+                            <span>Wishlist</span>
+                        </button>
+                    <button mat-menu-item>
+                            <mat-icon>person</mat-icon>
+                            <span>Go to Profile</span>
+                        </button>
+                    <button mat-menu-item (click)='login()'>
+                            <mat-icon>blank</mat-icon>
+                            <span>{{loggedIn ? 'Logout' : 'Login' }} </span>
+                        </button>
+                </mat-menu>
+            </ng-container>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container" (backdropClick)="close('backdrop')" hasBackdrop="false">
+        <mat-sidenav class='sidenav' #sidenav>
+            <app-side-nav (closeSideNav)='sidenav.close()' [webDevice]='webDevice'> </app-side-nav>
+        </mat-sidenav>
+        <router-outlet> </router-outlet>
+    </mat-sidenav-container>
+</mat-drawer-container>

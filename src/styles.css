@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.spacer {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+}
+
+mat-toolbar-row {
+    background-color: rgb(58, 65, 73);
+}
+
+.mat-toolbar {
+    min-height: 50px !important;
+    height: 50px !important;
+}
+
+.mat-toolbar-row {
+    min-height: 50px !important;
+    height: 50px !important;
+}
+
+.topShield {
+    margin-top: 50px;
+}
+
+.sidenav-container {
+    height: 98vh;
+}
+
+.sidenav {
+    margin-top: 34px;
+    width: 20%;
+    min-width: 250px;
+}
+
+.fixed-header {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    border-radius: 0;
+    color: #fff;
+}
+
+.center {
+    text-align: center;
+}
+
+.stretch {
+    width: 100%;
+}
